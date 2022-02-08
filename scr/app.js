@@ -177,6 +177,25 @@ const addIngridients = lebel => {
 };
 addIngridients(inputs);
 
+//Оценка стоимости пиццы
+const pizzaCost = document.querySelector('.const-price'),
+      createPizzaBtn = document.querySelector('.add_constructor_pizza');
+
+document.addEventListener('click', (event)=>{
+    if(event.target.classList.contains('topping-item-checkbox')){
+        let customPizzaPrice = 0;
+        const checkedIng = document.querySelectorAll('.toping_checkbox');
+        setTimeout(setCustomPizzaPrice, 100, checkedIng,customPizzaPrice);
+    }
+})
+const setCustomPizzaPrice = (input,pr) => {
+    input.forEach((el) => {
+        if(el.checked){
+            pr += Number(el.parentNode.dataset.cost);
+        }
+    })
+    pizzaCost.innerText = pr + 'руб';
+}
 // корзина
 let fullPrice = 0;
 let finishPrice = document.querySelector('.price-info');
