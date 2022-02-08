@@ -5,6 +5,9 @@
     text-decoration: none;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 *::after,
 *::before {
   box-sizing: border-box;
@@ -48,10 +51,29 @@ h2{
     color: #FFFFFF;
 }
 h3{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+h4 {
+    font-style: normal;
     font-weight: 600;
     font-size: 24px;
     line-height: 100%;
     color: #FFFFFF;
+}
+h5{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
 }
 header{
     padding-top: 48px;
@@ -345,14 +367,28 @@ header{
 .pizza-img-info:hover .pizza-descr > p{
     transform: translateY(0);
 }
-.pizza-name{
-    margin: 15px 0 18px 0;
-}
 .pizza_touch{
     width: 295px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.pizza_inf{
+    display: flex;
+    justify-content: space-between;
+    width: 295px;
+    margin: 15px 0 18px 0;
+    align-items: flex-end;
+}
+.pizza-weight{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 100%;
+    /* identical to box height, or 18px */
+
+
+    color: #878787;
 }
 .pizza_touch-price span{
     font-weight: 600;
@@ -405,4 +441,349 @@ header{
     font-size: 24px;
     line-height: 100%;
     color: #FFFFFF;
+}
+.constructor_info p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-top: 25px;
+    width: 632px;
+    margin-bottom: 37px;
+}
+.topings-name{
+    margin-bottom: 21px;
+}
+.toping_checkbox{
+    display: none;
+}
+.topping-item-checkbox{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 100%;
+    color: #FFFFFF;
+    width: 295px;
+}
+.topping-item-checkbox{
+    display: flex;
+    align-items: flex-start;
+}
+.fake{
+    display: block;
+    width: 35px;
+    height: 35px;
+    border: 2px solid #7C00DD;
+    margin-right: 22px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.fake::before{
+    content: "";
+    width: 33px;
+    height: 33px;
+    background: url('../img/checked.png');
+    opacity: 0;
+    transition: 0.3s ease;
+}
+.toping_checkbox:checked + .fake::before {
+    opacity: 1;
+}
+.topin{
+    width: 295px;
+    height: auto;
+}
+.toping div:last-child{
+    margin-bottom: 0;
+}
+.topping-item{
+    margin-bottom: 15px;
+}
+.constructor_wrapper-pizza-toppings{
+    display: grid;
+    grid-template-columns: repeat(2,295px);
+    grid-auto-rows: 295px;
+    grid-column-gap: 20px;
+}
+.constructor_wrapper-pizza{
+    display: flex;
+    justify-content: space-between;
+}
+.current-pizza{
+    position: relative;
+    margin-top: -60px;
+    width: 609px;
+    height: 609px;
+}
+.current-pizza-item{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-size: 100%;
+}
+.testo1{
+    background: url('../img/topings/testo\ orig.png');
+    display: none;
+    z-index: -7;
+}
+.testo2{
+    background: url('../img/topings/testo\ 1.png');
+    display: none;
+    z-index: -7;
+}
+.testo3{
+    background: url('../img/topings/testo\ 2.png');
+    display: none;
+    z-index: -7;
+}
+.sous1{
+    background: url('../img/topings/osnova.png');
+    display: none;
+    z-index: -6;
+}
+.sous2{
+    background: url('../img/topings/osnova\ 1.png');
+    display: none;
+    z-index: -6;
+}
+.top-tomat{
+    background: url('../img/topings/tomat.png');
+    display: none;
+}
+.top-gribi{
+    background: url('../img/topings/shampinion.png');
+    display: none;
+}
+.top-pepper{
+    background: url('../img/topings/perec.png');
+    display: none;
+}
+.top-ananas{
+    background: url('../img/topings/ananas.png');
+    display: none;
+}
+.top-olivki{
+    background: url('../img/topings/olives.png');
+    display: none;
+}
+.top-mozzarella{
+    background: url('../img/topings/mozzarella.png');
+    display: none;
+}
+.top-pappironi{
+    background: url('../img/topings/kolbasa.png');
+    display: none;
+}
+.top-vetchina{
+    background: url('../img/topings/bekon.png');
+    display: none;
+}
+.top-chiken{
+    background: url('../img/topings/chiken.png');
+    display: none;
+}
+.back-light{
+    width: 566px;
+    height: 566px;
+    border-radius: 500px;
+    background: var(--color-main);
+    filter: blur(100px);
+    z-index: -20;
+    position: absolute;
+    left: 5%;
+
+}
+.active-toping{
+    display: block;
+}
+.constructor_wrp_add-and-price{
+    margin-top: -50px;
+    display: flex;
+    align-items: center;
+}
+.const-price{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    color: #FFFFFF;
+}
+.const-price b{
+    font-size: 14px;
+}
+.wrp-backet{
+    display: grid;
+    grid-template-columns: repeat(1,500px);
+    grid-gap: 20px;
+}
+.basket-pizza{
+    display: flex;
+}
+.basket-info{
+    margin-left: 25px;
+}
+.basket-info-weigth{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-top: 9px;
+}
+.pizza-num{
+    align-items: center;
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    margin-top: 9px;
+    color: #FFFFFF;
+}
+.basket-img{
+    width: 195px;
+    height: 118px;
+}
+.pizza-price{
+    display: flex;
+    margin-top: 28px;
+    align-items: flex-end;
+    color: #FFFFFF;
+}
+.price{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 100%;
+    margin-right: 5px;
+}
+.mn-pl{
+    cursor: pointer;
+}
+.basket-form{
+    width: 609px;
+    height: 365px;
+    border: 5px solid #7C00DD;
+    box-sizing: border-box;
+}
+.basket-form_wrp{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 37px;
+}
+.basket-form{
+    padding: 40px;
+}
+.inp-form{
+    width: 200px;
+    height: 40px;
+    background: #FFFFFF;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 100%;
+    color: #141414;
+    padding: 10px;
+    border: 0px;
+
+}
+.inp-form2{
+    width: 286px;
+    height: 40px;
+    background: #FFFFFF;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 100%;
+    color: #141414;
+    padding: 10px;
+    border: 0px;
+}
+.inp-form3{
+    width: 83px;
+    height: 40px;
+    background: #FFFFFF;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    color: #141414;
+    padding: 10px;
+    border: 0px;
+}
+.form{
+    padding-top: 30px;
+    display: grid;
+    grid-gap: 25px;
+}
+.main-info{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 25px;
+}
+.basket-form_first-info{
+    display: grid;
+    width: 200px;
+    grid-gap: 15px;
+}
+.basket-form_second-info{
+    display: grid;
+    width: 286px;
+    grid-gap: 15px;
+}
+.second-info_adress{
+    display: flex;
+    justify-content: space-between;
+}
+.form-last-info{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: flex-end;
+}
+.money-info{
+    display: flex;
+}
+.price-rub{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 5px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+.price-info{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-left: 18px;
+}
+.sub-btn{
+    width: 156px;
+    height: 50px;
+    top: 2822px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    color: #FFFFFF;
+    background: var(--color-main);
+    border: 0px;
+    transition: all 0.3s ease;
+}
+.sub-btn:hover{
+    color: var(--color-main);
+    background: #ffffff;
+}
+footer{
+    background: #7C00DD;
+    padding: 27px 0 51px 0;
+}
+.footer{
+    display: flex;
+    align-items: flex-start;
+}
+.header_nav-menu a:hover{
+    color: var(--color-dark);
 }
