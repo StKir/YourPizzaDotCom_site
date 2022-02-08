@@ -52,7 +52,7 @@ class Pizza {
                 </div>
                     <div class="pizza_touch">
                         <h4 class="pizza_touch-price">${this.price}<b>руб</b></h4>
-                        <div class="pizza_touch-price-btn" data-price="${this.price}" data-name="${this.name}" >
+                        <div class="pizza_touch-price-btn" data-price="${this.price}" data-name="${this.name}" data-src="${this.img}" data-weight="${this.weight}">
                             В корзину
                     </div>
             </div>       
@@ -143,9 +143,6 @@ let black = new Pizza(
     ).renderAll();
 // конец
 
-const btns = document.querySelectorAll('.pizza_touch-price-btn');
-console.log(btns[0].dataset.name);
-
 
 /// КОНСТРУКТОР
 const inputs = document.querySelectorAll('.topping-item-checkbox input'),
@@ -181,3 +178,112 @@ const addIngridients = lebel => {
 addIngridients(inputs);
 
 // корзина
+let fullPrice = 0;
+let finishPrice = document.querySelector('.price-info');
+let goBacket = document.querySelector('.go-to-backet');
+const renderBasket = (el) => {
+    let score = 1;
+    el.addEventListener('click', ()=>{
+        score = validNumPiza(el,score);
+        renderHtml(el,score);
+        fullPrice = getFullPrice();
+        setFullPrice();
+    });
+};
+const renderHtml = (el,score) =>{
+    const basket = document.querySelector('.wrp-backet');
+    const elementBasket = document.createElement('div');
+    elementBasket.classList.add('basket-pizza');
+    elementBasket.setAttribute('data-search', `${el.dataset.name}`);
+    elementBasket.innerHTML = `
+    <img class="basket-img" src="${el.dataset.src}" alt="">
+                    <div class="basket-info">
+                        <h5>${el.dataset.name}</h5>
+                        <span class="basket-info-weigth">${'30cм '+ el.dataset.weight + 'гр'}</span>
+                        <div class="pizza-num">
+                            <img class="min-pizza mn-pl" data-item="${el.dataset.name}" src="img/min.png" alt="">
+                            <span class="score">${score + 'шт'}</span>
+                            <img class="plus-pizza mn-pl" data-item="${el.dataset.name}" src="img/plus.png" alt="">
+                        </div>
+                        <div class="pizza-price">
+                            <span data-one="${el.dataset.price}" class="price">${el.dataset.price * score}</span>
+                            <span class="price-rub">руб</span>
+    `;
+    basket.append(elementBasket);
+};
+
+const validNumPiza = (el,score) =>{
+    const positions = document.querySelectorAll('.basket-info h5');
+    let basketArr = [];
+    positions.forEach((pos)=>{
+        basketArr.push(pos.textContent);
+    });
+    if(basketArr.includes(el.dataset.name)){
+        score++;
+        removeHtml(el);
+    }
+    return score;
+};
+const removeHtml = (el) => {
+    const date = document.querySelectorAll('.basket-pizza');
+        date.forEach((item)=>{
+            if (item.dataset.search == el.dataset.name){
+                item.remove();
+            }
+        });
+};
+const setFullPrice = () => {
+    finishPrice.innerText = `${fullPrice}`;
+    goBacket.innerText = `${fullPrice} руб`;
+};
+const getFullPrice = () => {
+    const date = document.querySelectorAll('.pizza-price .price');
+    let nowPrice = 0;
+    date.forEach((el)=>{
+        nowPrice += Number(el.textContent);
+    });
+    return nowPrice;
+};
+const btns = document.querySelectorAll('.pizza_touch-price-btn');
+btns.forEach((el)=>{
+    renderBasket(el);
+});
+
+//удаление и добавление штук в корзину
+document.addEventListener('click', (event) =>{
+    if(event.target.classList.contains('min-pizza')){
+        minPizza(event.target.dataset.item);
+    }
+    if(event.target.classList.contains('plus-pizza')) {
+        plusPizza(event.target.dataset.item);
+    }
+});
+const minPizza = (id) => {
+    const basketNow = document.querySelectorAll('.basket-pizza');
+    basketNow.forEach((item)=> {
+        if (item.dataset.search == id){
+            item.querySelector('.score').innerText = item.querySelector('.score').textContent[0]-1 +'шт';
+            item.querySelector('.price').innerText -= item.querySelector('.price').dataset.one;
+            fullPrice = getFullPrice();
+            setFullPrice();
+            if(item.querySelector('.score').textContent[0] < 1){
+                item.remove();
+            }
+        }
+    });
+};
+const plusPizza = (id) => {
+    const basketNow = document.querySelectorAll('.basket-pizza');
+    basketNow.forEach((item)=> {
+        if (item.dataset.search == id){
+            if (item.querySelector('.score').textContent[0] == 9){
+
+            }else {
+                item.querySelector('.score').innerText = Number(item.querySelector('.score').textContent[0]) +1 +'шт';
+                item.querySelector('.price').innerText = Number(item.querySelector('.price').dataset.one) * Number(item.querySelector('.score').textContent[0]);
+                fullPrice = getFullPrice();
+                setFullPrice();
+            }
+        }
+    });
+};
