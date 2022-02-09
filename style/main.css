@@ -101,7 +101,7 @@ header{
     margin-right: 0px;
 }
 .nav-menu a:hover{
-    color: var(--color-main);
+    color: #9d55d4;
     text-shadow: 0px 0px 25px #7C00DD;
 }
 .back{
@@ -117,12 +117,154 @@ header{
     position: absolute;
     z-index: -3;
 }
+.dop-elements{
+    position: relative;
+    top: 0;
+    right: 0;
+}
+.basilik{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    animation-name: basilik;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.pap1{
+    position: absolute;
+    top: 600px;
+    left: 530px;
+    animation-name: pap1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    
+}
+.pap2{
+    position: absolute;
+    top: 100px;
+    left: 750px;
+    animation-name: pap1;
+    animation-duration: 3s;
+    animation-direction: reverse;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
 .back_steam{
     position: absolute;
     z-index: -2;
     top: 75px;
     right: 0px;
 }
+.steam1{
+    animation-name: steam1;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.steam2{
+    animation-name: steam2;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    opacity: 0;
+}
+@keyframes steam2{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.5;
+        transform: rotate(-5deg);
+        top: 80;
+    }
+    50%{
+        opacity: 1;
+        transform: rotate(-10deg);
+        top: 90;
+    }
+    75%{
+        opacity: 0.2;
+        transform: rotate(-15deg);
+
+        top: 100;
+
+    }
+    100%{
+        opacity: 0;
+
+        top: 110;
+        transform: rotate(-20deg);
+    }
+}
+@keyframes steam1 {
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.2;
+        transform: rotate(5deg);
+        right: 50px;
+    }
+    50%{
+        opacity: 1;
+        transform: rotate(10deg);
+        right: 100px;
+    }
+    75%{
+        opacity: 0.5;
+        transform: rotate(15deg);
+        right: 150px;
+
+    }
+    100%{
+        opacity: 0;
+        right: 180px;
+        transform: rotate(20deg);
+    }
+}
+@keyframes basilik{
+    0%{
+        transform: rotate(-5deg);
+    }
+    25%{
+        transform: rotate(-10deg);
+        top: 15px;
+    }
+    50%{
+        transform: rotate(-15deg);
+        top: 20px;
+    }
+    75%{
+        transform: rotate(-10deg);
+        top: 15px;
+
+    }
+    100%{
+        transform: rotate(-5deg);
+    }
+}
+@keyframes pap1{
+    0%{
+        transform: rotate(5deg);
+    }
+    25%{
+        transform: rotate(15deg);
+    }
+    50%{
+        transform: rotate(20deg);
+    }
+    75%{
+        transform: rotate(15deg);
+
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}
+
 .back_neon{
     width: 518px;
     height: 268px;
@@ -757,7 +899,7 @@ header{
     font-size: 36px;
     line-height: 100%;
     color: #FFFFFF;
-    margin-left: 18px;
+    margin-left: 8px;
 }
 .sub-btn{
     width: 156px;
@@ -783,7 +925,4 @@ footer{
 .footer{
     display: flex;
     align-items: flex-start;
-}
-.header_nav-menu a:hover{
-    color: var(--color-dark);
 }
