@@ -196,6 +196,19 @@ const setCustomPizzaPrice = (input,pr) => {
     })
     pizzaCost.innerText = pr + 'руб';
 }
+// доавление кастомной пиццы в корзину
+const addCustom = document.querySelector('.add_constructor_pizza a');
+
+addCustom.addEventListener('click', (event) => {
+    let costCustom = document.querySelector('.const-price').textContent;
+    costCustom = Number(costCustom.slice(0,3));
+    addCustom.setAttribute('data-price', costCustom);
+    addCustom.setAttribute('data-weight', costCustom);
+    console.log(event.target);
+    renderHtml(event.target,1);
+})
+const allIngridients = document.querySelectorAll('.current-pizza-item');
+
 // корзина
 let fullPrice = 0;
 let finishPrice = document.querySelector('.price-info');
@@ -229,6 +242,7 @@ const renderHtml = (el,score) =>{
                             <span class="price-rub">руб</span>
     `;
     basket.append(elementBasket);
+    addPizzaOrder();
 };
 
 const validNumPiza = (el,score) =>{
@@ -267,14 +281,26 @@ const btns = document.querySelectorAll('.pizza_touch-price-btn');
 btns.forEach((el)=>{
     renderBasket(el);
 });
+const addPizzaOrder = () => {
+    const orders = document.querySelectorAll('.basket-info h5');
+    const inpOrder = document.querySelector('.order-inp');
+    inpOrder.value = '';
+    orders.forEach((el) => {
+        let scor = el.parentNode.querySelector('.score').textContent;
+        inpOrder.value += el.textContent + `-${scor} `;
+        console.log(inpOrder.value);
+    });
+}
 
 //удаление и добавление штук в корзину
 document.addEventListener('click', (event) =>{
     if(event.target.classList.contains('min-pizza')){
         minPizza(event.target.dataset.item);
+        addPizzaOrder();
     }
     if(event.target.classList.contains('plus-pizza')) {
         plusPizza(event.target.dataset.item);
+        addPizzaOrder();
     }
 });
 const minPizza = (id) => {

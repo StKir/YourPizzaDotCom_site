@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/normalize.css">
     <link rel="stylesheet" href="./style/main.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Твоя пицца.ком</title>
 </head>
 <body>
@@ -23,11 +24,24 @@
             </div>
             <img class="back_pizza" src="img/back/back_pizza.png" alt="">
             <div class="back_neon"></div>
+            <img src="./img/mobile-back.png" alt="" class="mobile-back">
         </div>
         <header class="header">
             <div class="countainer menu">
                 <div class="logo">
                     <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+                    <div class="hamburger-menu">
+                        <input id="menu__toggle" type="checkbox" />
+                        <label class="menu__btn" for="menu__toggle">
+                          <span></span>
+                        </label>
+                    
+                        <ul class="menu__box">
+                          <li><a class="menu__item" href="#menu">Меню</a></li>
+                          <li><a class="menu__item" href="#constructor">Конструктор</a></li>
+                          <li><a class="menu__item" href="#">Доставка</a></li>
+                        </ul>
+                      </div>
                 </div>
                 <nav class="header_nav-menu">
                     <ul class="nav-menu">
@@ -63,17 +77,17 @@
                     </div>
                 </div>
                 <div class="main_social">
-                    <a href="#"><img class="social inst" src="img/inst.png" alt=""></a>
-                    <a href="#"><img class="social tg" src="img/tg.png" alt=""></a>
-                    <a href="#"><img class="social vk" src="img/vk.png" alt=""></a>
+                    <a href="https://www.instagram.com/design_devil/"><img class="social inst" src="img/inst.png" alt=""></a>
+                    <a href="https://t.me/OG_Kurasaki"><img class="social tg" src="img/tg.png" alt=""></a>
+                    <a href="https://vk.com/k.strukov95"><img class="social vk" src="img/vk.png" alt=""></a>
                 </div>
             </div>
         </section>
         <section class="section_menu" id="menu">
             <div class="countainer">
-                <h1>Меню</h1>
+                <h1 data-aos="zoom-out-right">Меню</h1>
                 <div class="menu_wrp_nav">
-                    <ul class="nav-navbar">
+                    <ul class="nav-navbar" data-aos="zoom-out-right">
                         <li data-id="veg" class="nav-navbar-list">#Веганская</li>
                         <li data-id="mas" class="nav-navbar-list">#С_мясом</li>
                         <li data-id="che" class="nav-navbar-list">#Много_сыра</li>
@@ -82,7 +96,7 @@
                         <li data-id="wat" class="nav-navbar-list">#Напитки</li>
                         <div class="nav-navbar-backet">
                             <div class="backet">
-                                <a href="#"><img src="img/backet.png" alt="Корзина"></a>
+                                <a href="#basket"><img src="img/backet.png" alt="Корзина"></a>
                             </div>
                             <a class="go-to-backet" href="#basket">К корзине</a>
                         </div>
@@ -224,7 +238,7 @@
                 </div>
                 <div class="constructor_wrp_add-and-price">
                     <div class="btn-1 add_constructor_pizza">
-                        <a href="#constructor">
+                        <a data-name="Ваша пицца" data-src="img/pizza/custom.png" href="#basket">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -244,11 +258,11 @@
                     </div>
                     <div class="basket-form">
                         <h5>Заполните форму</h5>
-                        <form class="form" action="">
+                        <form class="form" action="mail.php" method="POST">
                             <div class="main-info">
                                 <div class="basket-form_first-info">
-                                    <input name="user_name" placeholder="Имя" class="inp-form" type="text">
-                                    <input name="user_last-name" placeholder="Фамилия" class="inp-form" type="text">
+                                    <input name="user_name" placeholder="ФИО" class="inp-form" type="text">
+                                    <input name="user_tel" placeholder="+7 (999) 99 99 999" class="inp-form" type="tel">
                                     <select class="inp-form" selected placeholder="Способ оплаты" name="pay_info" id="pay">
                                         <option selected disabled>Cпособ оплаты</option>
                                         <option value="nal">Наличными</option>
@@ -272,13 +286,14 @@
                                     <span class="price-rub">руб</span>
                                 </div>
                                 <button class="sub-btn" type="submit">Заказать</button>
+                                <input name="order" class="order-inp" type="text" readonly style="display:none" >
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-        <footer class="section_footer">
+        <footer class="section_footer" data-aos="fade-up">
             <div class="countainer footer">
                 <div class="logo">
                     <a href="index.html"><img src="img/logo.png" alt="logo"></a>
@@ -295,5 +310,9 @@
         </footer>
     </main>
 <script src="scr/app.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 </html>
