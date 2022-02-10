@@ -1,3 +1,17 @@
+// burger-menu
+const burger = document.querySelector('.hamburger-menu');
+const menuOverlay = document.querySelector('.mobile-menu-nav');
+burger.addEventListener('click', ()=> {
+    menuOverlay.classList.toggle('mobile-menu_active');
+});
+
+let mask = document.querySelector('.mask');
+window.addEventListener('load', ()=>{
+    mask.classList.add('hide-preloader');
+    mask.remove();
+})
+
+
 /// tabs
 const navMenu = document.querySelectorAll('.nav-navbar-list');
 const menuPizzas = document.querySelectorAll('.nav-pizzas');
@@ -162,7 +176,8 @@ const addIngridients = lebel => {
                     el.parentNode.classList.remove('active-item-top');
                     let dopIngArr = ingridientsArray.slice(0,3);
                     ingridientsArray.forEach((e,i)=>{
-                        if(i < 3){e.classList.remove('active-toping')};
+                        if(i < 3){e.classList.remove('active-toping');
+                    };
                     });
                 });
                 node.checked = true;
@@ -187,15 +202,15 @@ document.addEventListener('click', (event)=>{
         const checkedIng = document.querySelectorAll('.toping_checkbox');
         setTimeout(setCustomPizzaPrice, 100, checkedIng,customPizzaPrice);
     }
-})
+});
 const setCustomPizzaPrice = (input,pr) => {
     input.forEach((el) => {
         if(el.checked){
             pr += Number(el.parentNode.dataset.cost);
         }
-    })
+    });
     pizzaCost.innerText = pr + 'руб';
-}
+};
 // доавление кастомной пиццы в корзину
 const addCustom = document.querySelector('.add_constructor_pizza a');
 
@@ -206,7 +221,7 @@ addCustom.addEventListener('click', (event) => {
     addCustom.setAttribute('data-weight', costCustom);
     console.log(event.target);
     renderHtml(event.target,1);
-})
+});
 const allIngridients = document.querySelectorAll('.current-pizza-item');
 
 // корзина
@@ -290,7 +305,7 @@ const addPizzaOrder = () => {
         inpOrder.value += el.textContent + `-${scor} `;
         console.log(inpOrder.value);
     });
-}
+};
 
 //удаление и добавление штук в корзину
 document.addEventListener('click', (event) =>{

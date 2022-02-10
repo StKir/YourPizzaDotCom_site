@@ -30,19 +30,20 @@
             <div class="countainer menu">
                 <div class="logo">
                     <a href="index.html"><img src="img/logo.png" alt="logo"></a>
-                    <div class="hamburger-menu">
-                        <input id="menu__toggle" type="checkbox" />
-                        <label class="menu__btn" for="menu__toggle">
-                          <span></span>
-                        </label>
-                    
-                        <ul class="menu__box">
-                          <li><a class="menu__item" href="#menu">Меню</a></li>
-                          <li><a class="menu__item" href="#constructor">Конструктор</a></li>
-                          <li><a class="menu__item" href="#">Доставка</a></li>
-                        </ul>
-                      </div>
+                    <div class="hamburger-menu" id="menuToggle">
+                        <input type="checkbox" />
+                        <span id="span1"></span>
+                        <span id="span2"></span>
+                        <span id="span3"></span>
+                    </div>
                 </div>
+                <nav class="mobile-menu-nav">
+                    <ul class="nav-menu-mob">
+                        <li><a href="#menu">Меню</a></li>
+                        <li><a href="#constructor">Конструктор</a></li>
+                        <li><a href="#">Доставка</a></li>
+                    </ul>
+                </nav>
                 <nav class="header_nav-menu">
                     <ul class="nav-menu">
                         <li><a href="#menu">Меню</a></li>
@@ -309,6 +310,13 @@
             </div>
         </footer>
     </main>
+    <div class="mask">
+        <div id="preloader">
+            <div id="loader">
+            </div>
+        </div>
+        <h4 class="h4-preloader">Начинаем месить тесто</h4>
+    </div>
 <script src="scr/app.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
