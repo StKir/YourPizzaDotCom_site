@@ -4,7 +4,7 @@ const menuOverlay = document.querySelector('.mobile-menu-nav');
 burger.addEventListener('click', ()=> {
     menuOverlay.classList.toggle('mobile-menu_active');
 });
-
+// Прелоудер
 let mask = document.querySelector('.mask');
 window.addEventListener('load', ()=>{
     mask.classList.add('hide-preloader');
@@ -23,7 +23,6 @@ navMenu.forEach(item =>{
         addClassActive(navMenu,item);
     });
 });
-// console.log(navMenu[0].dataset.id);
 function openMenuPizzas(param) {
     menuPizzas.forEach(el=>{
         el.classList.remove('active-pizzas');
@@ -62,7 +61,7 @@ class Pizza {
             </div>
                 <div class="pizza_inf">
                     <h4 class="pizza-name">${this.name}</h4>
-                    <span class="pizza-weight">${'30см - ' + this.weight + ' гр'}</span>
+                    <span class="pizza-weight">${this.weight + ' гр'}</span>
                 </div>
                     <div class="pizza_touch">
                         <h4 class="pizza_touch-price">${this.price}<b>руб</b></h4>
@@ -88,7 +87,7 @@ let milanskaya = new Pizza(
     'Миланская',
     750,
     'che',
-    500
+    '30см - 500'
     ).renderAll();
 
 let meat = new Pizza(
@@ -97,7 +96,7 @@ let meat = new Pizza(
     'Мясная',
     650,
     'mas',
-    650
+    '30см - 650'
     ).renderAll();
 let study = new Pizza(
     'img/pizza/6.png',
@@ -105,7 +104,7 @@ let study = new Pizza(
     'Студенческая',
     550,
     'mas',
-    530
+    '30см - 530'
     ).renderAll();
 let papironi = new Pizza(
     'img/pizza/3.png',
@@ -113,7 +112,7 @@ let papironi = new Pizza(
     'Папирони',
     600,
     'mas',
-    620
+    '30см - 600'
     ).renderAll();
 let sea = new Pizza(
     'img/pizza/4.png',
@@ -121,7 +120,7 @@ let sea = new Pizza(
     'Морская',
     750,
     'new',
-    480
+    '30см - 480'
     ).renderAll();
 let marsh = new Pizza(
     'img/pizza/5.png',
@@ -129,7 +128,7 @@ let marsh = new Pizza(
     'Грибная',
     550,
     'veg',
-    510
+    '30см - 510'
     ).renderAll();
 let margarita = new Pizza(
     'img/pizza/7.png',
@@ -137,7 +136,7 @@ let margarita = new Pizza(
     'Маргарита',
     600,
     'che',
-    530
+    '30см - 600'
     ).renderAll();
 let datskaya = new Pizza(
     'img/pizza/8.png',
@@ -145,7 +144,7 @@ let datskaya = new Pizza(
     'Датская',
     630,
     'veg',
-    550
+    '30см - 550'
     ).renderAll();
 let black = new Pizza(
     'img/pizza/9.png',
@@ -153,7 +152,23 @@ let black = new Pizza(
     'Черная мамба',
     700,
     'new',
-    550
+    '30см - 550'
+    ).renderAll();
+let cola = new Pizza(
+    'img/pizza/wat/cola.jpeg',
+    'Это кока-кола что тут можно еще написать?',
+    'Кока-кола 0.5л',
+    100,
+    'wat',
+    500
+    ).renderAll();
+let sprite = new Pizza(
+    'img/pizza/wat/sprite.jpg',
+    'Спрайт',
+    'Спрайт 0.5л',
+    100,
+    'wat',
+    500
     ).renderAll();
 // конец
 
@@ -246,7 +261,7 @@ const renderHtml = (el,score) =>{
     <img class="basket-img" src="${el.dataset.src}" alt="">
                     <div class="basket-info">
                         <h5>${el.dataset.name}</h5>
-                        <span class="basket-info-weigth">${'30cм '+ el.dataset.weight + 'гр'}</span>
+                        <span class="basket-info-weigth">${el.dataset.weight + 'гр'}</span>
                         <div class="pizza-num">
                             <img class="min-pizza mn-pl" data-item="${el.dataset.name}" src="img/min.png" alt="">
                             <span class="score">${score + 'шт'}</span>
@@ -347,3 +362,41 @@ const plusPizza = (id) => {
         }
     });
 };
+// валидация 
+const subBtn = document.querySelector('.sub-btn');
+
+subBtn.addEventListener('click', (event)=> {
+    const formsValid1 = document.querySelectorAll('.inp');
+
+    formsValid1.forEach((el) => {
+        el.classList.remove('error-form');
+        switch(el.placeholder) {
+            case 'ФИО':
+                if(el.value.length < 5){event.preventDefault();
+                el.classList.add('error-form');
+                }
+            break;
+            case '+7 (999) 99 99 999':
+                if(el.value.length < 11){event.preventDefault();
+                el.classList.add('error-form');
+                }
+            break;
+            case 'Улица':
+                if(el.value.length < 3){event.preventDefault();
+                el.classList.add('error-form');
+                }
+            break;
+            case 'Дом':
+                if(el.value.length < 1){event.preventDefault();
+                el.classList.add('error-form');
+                }
+            break;
+            case 'Способ оплаты':
+                if(el.value.length ){event.preventDefault();
+                el.classList.add('error-form');
+                }
+            break;
+            default:
+        }
+    });
+});
